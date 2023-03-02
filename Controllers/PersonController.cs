@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NishitBidOneDemo.Data;
+using NishitBidOneDemo.Helpers;
 using NishitBidOneDemo.Models;
 using NishitBidOneDemo.Services;
 using System.Diagnostics;
@@ -27,10 +28,16 @@ public class PersonController : Controller
     [HttpPost]
     public IActionResult Create(PersonData person)
     {
+        _logger.LogInformation("[Person][Create]");
+
         if (!ModelState.IsValid)
             return View("Create", person);
 
+        _logger.LogInformation($"[Person][Create] Creating person {JsonHelper.Serialize(person)}");
+
         _personService.CreatePerson(person);
+
+        _logger.LogInformation("[Person][Create] Person created");
 
         ModelState.Clear();
 
