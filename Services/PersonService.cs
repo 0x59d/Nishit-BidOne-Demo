@@ -1,12 +1,11 @@
 ﻿using NishitBidOneDemo.Data;
 
-namespace NishitBidOneDemo.Services
+namespace NishitBidOneDemo.Services;
+
+public class PersonService : IPersonService
 {
-    public class PersonService : IPersonService
+    public void CreatePerson(PersonData person)
     {
-        public void CreatePerson(PersonData person)
-        {
-            throw new NotImplementedException();
-        }
+        throw new NotImplementedException();
     }
 }
