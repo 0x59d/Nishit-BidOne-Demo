@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NishitBidOneDemo.Data;
 using NishitBidOneDemo.Models;
 using NishitBidOneDemo.Services;
 using System.Diagnostics;
@@ -21,6 +22,19 @@ public class PersonController : Controller
     public IActionResult Create()
     {
         return View();
+    }
+
+    [HttpPost]
+    public IActionResult Create(PersonData person)
+    {
+        if (!ModelState.IsValid)
+            return View("Create", person);
+
+        _personService.CreatePerson(person);
+
+        ModelState.Clear();
+
+        return View(person);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
