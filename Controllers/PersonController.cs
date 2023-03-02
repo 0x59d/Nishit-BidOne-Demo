@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NishitBidOneDemo.Data;
-using NishitBidOneDemo.Helpers;
 using NishitBidOneDemo.Models;
 using NishitBidOneDemo.Services;
 using System.Diagnostics;
@@ -35,7 +34,9 @@ public class PersonController : Controller
 
         ModelState.Clear();
 
-        return View(person);
+        ViewBag.Success = true;
+
+        return View();
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

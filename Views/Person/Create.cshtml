@@ -4,13 +4,21 @@
     ViewData["Title"] = "Create Person";
 }
 
-<form action="/Person/Create" method="post">
-    <h3>Create Person</h3>
+<div class="container g-0">
+    <div class="row">
+        <h3 class="col-md-11">Create Person</h3>
+
+        <h4 id="success-message" class="col-md hidden">Saved</h4>
+    </div>
+
     <p>
         Simple demonstration of saving a person.
         <br />
         The person object will be saved to a file on the backend ("persons.json")
     </p>
+</div>
+
+<form action="/Person/Create" method="post">
 
     <div class="my-1">
         @Html.LabelFor(m => m.FirstName)
@@ -32,3 +40,16 @@
 
     <input type="submit" value="Save" />
 </form>
+
+
+@if(ViewBag.Success != null) 
+{
+    <script type="text/javascript">
+        var successMsg = document.getElementById('success-message');
+        successMsg.classList.toggle('visible');
+
+        setTimeout(() => {
+            successMsg.classList.toggle('visible');
+        }, 2400);
+    </script>
+}

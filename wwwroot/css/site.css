@@ -16,3 +16,17 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+#success-message {
+    background-color: limegreen;
+    color: white;
+    border-radius: 4px;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.hidden {
+    visibility: hidden;
+}
